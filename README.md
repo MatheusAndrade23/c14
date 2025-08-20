@@ -18,6 +18,52 @@ Depois, é necessário instalar as dependências do projeto com o gerenciador de
 npm i
 ```
 
+## Resolução de Conflito de Dependências - Caso Real (19/08/2025)
+
+### O Problema
+
+Durante o desenvolvimento, ocorreu o seguinte conflito no `package.json`:
+
+1. **Estado inicial**: O projeto tinha apenas dependências de desenvolvimento (`@types/node`, `typescript`)
+2. **PR mergeado na main**: Alguém adicionou `express`, `cors` e suas tipagens (`@types/express`, `@types/cors`)
+3. **Commit local**: Eu instalei e commitei a dependência `zod` para validação
+4. **Conflito**: Ao tentar sincronizar com a main, houve conflito no `package.json`
+
+### Como Foi Resolvido no VS Code
+
+1. **Identifiquei o conflito**: VS Code mostrou marcadores de conflito no `package.json`
+2. **Estado do conflito**:
+
+   ```json
+   // Minha versão local
+   "dependencies": {
+     "zod": "^4.0.17"
+   }
+
+   // Versão da main (PR mergeado)
+   "dependencies": {
+     "cors": "^2.8.5",
+     "express": "^5.1.0"
+   }
+   ```
+
+3. **Resolução**: Usei "Accept Both Changes" no VS Code para manter todas as dependências
+4. **Resultado final**:
+   ```json
+   "dependencies": {
+     "zod": "^4.0.17",
+     "cors": "^2.8.5",
+     "express": "^5.1.0"
+   },
+   "devDependencies": {
+     "@types/cors": "^2.8.19",
+     "@types/express": "^5.0.3",
+     "@types/node": "^24.2.1",
+     "typescript": "^5.9.2"
+   }
+   ```
+5. **Pós-resolução**: Executei `npm install` para garantir que todas as dependências fossem instaladas
+
 ## Build
 
 Para gerar a build, é necessário rodar o comando:
