@@ -18,6 +18,26 @@ Depois, é necessário instalar as dependências do projeto com o gerenciador de
 npm i
 ```
 
+## Build
+
+Para gerar a build, é necessário rodar o comando:
+
+```bash
+npm run build
+```
+
+> Pode notar que a pasta `dist` foi criada no diretório raiz.
+
+## Execução
+
+Para executar o projeto, é necessário rodar o comando:
+
+```bash
+node dist
+```
+
+## ✅ Pronto! O Projeto está sendo executado!
+
 ## Resolução de Conflito de Dependências - Caso Real (19/08/2025)
 
 ### O Problema
@@ -63,23 +83,3 @@ Durante o desenvolvimento, ocorreu o seguinte conflito no `package.json`:
    }
    ```
 5. **Pós-resolução**: Executei `npm install` para garantir que todas as dependências fossem instaladas
-
-## Build
-
-Para gerar a build, é necessário rodar o comando:
-
-```bash
-npm run build
-```
-
-> Pode notar que a pasta `dist` foi criada no diretório raiz.
-
-## Execução
-
-Para executar o projeto, é necessário rodar o comando:
-
-```bash
-node dist
-```
-
-## ✅ Pronto! O Projeto está sendo executado!
