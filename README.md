@@ -38,6 +38,14 @@ node dist
 
 ## ✅ Pronto! O Projeto está sendo executado!
 
+## Testes
+
+Para executar os testes unitários do projeto, utilize o comando:
+
+```bash
+npm run test
+```
+
 ## Resolução de Conflito de Dependências - Caso Real (19/08/2025)
 
 ### O Problema
@@ -55,12 +63,10 @@ Durante o desenvolvimento, ocorreu o seguinte conflito no `package.json`:
 2. **Estado do conflito**:
 
    ```json
-   // Minha versão local
    "dependencies": {
      "zod": "^4.0.17"
    }
 
-   // Versão da main (PR mergeado)
    "dependencies": {
      "cors": "^2.8.5",
      "express": "^5.1.0"
@@ -82,4 +88,22 @@ Durante o desenvolvimento, ocorreu o seguinte conflito no `package.json`:
      "typescript": "^5.9.2"
    }
    ```
-5. **Pós-resolução**: Executei `npm install` para garantir que todas as dependências fossem instaladas
+5. **Pós-resolução**: Executei `npm install` para garantir que todsas as dependências fossem instaladas
+
+## Testes Falharam após Regressão do Código - Caso Real (01/07/2025)
+
+### O Problema
+
+Foi feito um PR com um código em que foi removida a obrigatoriedade da descrição para uma task.
+
+Após rodar os testes unitários com o comando `npm run test`, eles falharam:
+
+![Teste Falhando](./github/files/failed-test.png)
+
+### Como Foi Resolvido
+
+Para os testes voltarem a passar, foi necessário retornar a obrigatoriedade da descrição para a criação de uma task.
+
+Rodando os testes novamente, vemos que eles passam:
+
+![Teste Passando](./github/files/succeeded-test.png)
