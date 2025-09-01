@@ -24,7 +24,7 @@ app.get("/health", (req, res) => {
   });
 });
 
-app.post("/create", async (req, res) => {
+app.post("/posts", async (req, res) => {
   const body = req.body;
 
   const repository = new InMemoryTasksRepository();
