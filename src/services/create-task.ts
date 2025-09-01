@@ -5,7 +5,7 @@ import { ITasksRepository } from '../repositories/ITasksRepository.js';
 export default class CreateTaskUseCase {
   constructor(private readonly tasksRepository: ITasksRepository) {}
 
-  async execute(name: string, description: string): Promise<IOkResponse> {
+  async execute(name: string, description?: string): Promise<IOkResponse> {
     if (!name.trim()) {
       throw new Error('Name and description are required');
     }
