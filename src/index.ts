@@ -3,6 +3,8 @@ import cors from "cors";
 import CreateTaskUseCase from "./services/create-task.js";
 import InMemoryTasksRepository from "./repositories/in-memory-tasks-repository.js";
 
+const repository = new InMemoryTasksRepository();
+
 const app = express();
 
 app.use(
@@ -27,7 +29,6 @@ app.get("/health", (req, res) => {
 app.post("/posts", async (req, res) => {
   const body = req.body;
 
-  const repository = new InMemoryTasksRepository();
   const service = new CreateTaskUseCase(repository);
 
   const response = await service.execute(body.name, body.description);
