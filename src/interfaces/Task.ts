@@ -12,7 +12,7 @@ export class Task {
   }
 
   constructor(name: string, description: string) {
-    if (!name || description) {
+    if (!name.trim() || !description.trim()) {
       throw new Error("Name and description are required");
     }
 
