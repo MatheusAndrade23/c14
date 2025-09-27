@@ -32,9 +32,24 @@ app.post("/posts", async (req, res) => {
 
   const service = new CreateTaskUseCase(repository);
 
-  const response = await service.execute(body.name, body.description);
+  try {
+    const response = await service.execute(body.name, body.description);
+    res.status(response.statusCode).json(response);
+  } catch (error) {
+    if (error instanceof Error) {
+      const { message } = error;
 
-  res.status(response.statusCode).json(response);
+      if (message === "Name and description are required") {
+        return res.status(400).json({ message });
+      }
+
+      if (message === "A task with this name already exists") {
+        return res.status(400).json({ message });
+      }
+    }
+
+    return res.status(500).json({ message: "Internal server error" });
+  }
 });
 
 app.listen(3333, () => console.log("Server running"));
