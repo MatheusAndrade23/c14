@@ -1,3 +1,5 @@
+[![CI](https://github.com/MatheusAndrade23/c14/actions/workflows/ci.yml/badge.svg)](https://github.com/MatheusAndrade23/c14/actions/workflows/ci.yml)
+
 ### Nome: Matheus Dionísio Teixeira Andrade
 ### Matrícula: 355
 
