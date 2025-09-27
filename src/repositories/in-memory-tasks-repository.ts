@@ -5,16 +5,20 @@ export default class InMemoryTasksRepository implements ITasksRepository {
   public items: Task[] = [];
 
   create(newTask: Task): Promise<void> {
-    const existingTask = this.items.find(
-      (existingTask) => existingTask.name === newTask.name
-    );
-
-    if (existingTask) {
-      throw new Error("Task with same name already exists");
-    }
-
     this.items.push(newTask);
 
     return Promise.resolve();
+  }
+
+  findByName(name: string): Promise<Task | null> {
+    const existingTask = this.items.find(
+      (existingTask) => existingTask.name === name
+    );
+
+    if (!existingTask) {
+      return Promise.resolve(null);
+    }
+
+    return Promise.resolve(existingTask);
   }
 }
