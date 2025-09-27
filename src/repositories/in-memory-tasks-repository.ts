@@ -21,4 +21,16 @@ export default class InMemoryTasksRepository implements ITasksRepository {
 
     return Promise.resolve(existingTask);
   }
+
+  deleteByName(name: string): Promise<void> {
+    const taskIndex = this.items.findIndex(
+      (existingTask) => existingTask.name === name
+    );
+
+    if (taskIndex !== -1) {
+      this.items.splice(taskIndex, 1);
+    }
+
+    return Promise.resolve();
+  }
 }
