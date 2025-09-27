@@ -10,10 +10,15 @@ export default class CreateTaskUseCase {
       throw new Error("Name and description are required");
     }
 
-    const task = new Task({
-      name,
-      description,
-    });
+    const existingTaskWithSameName = await this.tasksRepository.findByName(
+      name
+    );
+
+    if (existingTaskWithSameName) {
+      throw new Error("A task with this name already exists");
+    }
+
+    const task = new Task(name, description);
 
     await this.tasksRepository.create(task);
 
