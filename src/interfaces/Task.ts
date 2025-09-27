@@ -1,9 +1,14 @@
 export class Task {
-  constructor(props?: Partial<Task>) {
-    Object.assign(this, props);
+  protected name: string;
+
+  protected description: string;
+
+  constructor(name: string, description: string) {
+    if (!name || description) {
+      throw new Error("Name and description are required");
+    }
+
+    this.name = name;
+    this.description = description;
   }
-
-  name!: string;
-
-  description!: string;
 }
